@@ -1,6 +1,9 @@
 import express from 'express';
+import user from "./routes/router.js"
 const app = express();
 
+
+app.use("/user" ,user)
 
 
 
