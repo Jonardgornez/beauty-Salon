@@ -7,10 +7,13 @@ import Transaction from "../pages/Transaction"
 import History from "../pages/History"
 import About from "../pages/About"
 import Contact from "../pages/Contact"
+import Dashboard from "../admin/pages/Dashboard"
+import Test from "../admin/pages/Test"
 
 import Login from "../pages/Login"
 
 import MainLayout from "../layout/MainLayout";
+import AdminLayout from "../admin/layout/AdminLayout";
 
 function AppRoutes() {
   return (
@@ -21,7 +24,7 @@ function AppRoutes() {
       {/* Layout Wrapper */}
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home/>} />
-         <Route path="/home" element={<Home/>} />
+        <Route path="/home" element={<Home/>} />
         <Route path="/services" element={<Services/>}/>
         <Route path="/calendar" element={<Calendar/>}/>
         <Route path="/transaction" element={<Transaction/>}/>
@@ -30,8 +33,16 @@ function AppRoutes() {
         <Route path="/contact" element={<Contact/>}/>
       </Route>
 
+      <Route path="/admin" element={<AdminLayout/>}>
+        <Route index element={<Dashboard/>}/>
+        <Route  path="dashboard" element={<Dashboard/>}/>
+        <Route path="test" element={<Test/>}/>
+      </Route>
+
       {/* Default Redirect */}
+       <Route path="/admin/*" element={<Navigate to="/admin/dashboard" />} />
       <Route path="*" element={<Navigate to="/login" />} />
+     
     </Routes>
   )
 }
